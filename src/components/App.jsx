@@ -7,6 +7,7 @@ import { Statistics } from "./Statistics/Statistics";
 import { Notification } from "./Notificati0n/Notification";
 import friends from './data/friends.json';
 import { Gallery } from "./Gallery/Gallery";
+
 export class App extends Component {
   state = {
   good: 0,
