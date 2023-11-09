@@ -1,5 +1,6 @@
-import { nanoid } from 'nanoid'
-import css from "./Gallery.module.css"
+import { nanoid } from 'nanoid';
+import { useMemo } from 'react';
+import css from './Gallery.module.css';
 
 const GalleryItem = ({ original, description }) => (
   <li className={css.gallery__item}>
@@ -7,11 +8,18 @@ const GalleryItem = ({ original, description }) => (
   </li>
 );
 
-export const Gallery = ({ friends }) => (
-  <ul className={css.gallery}>
-    {friends.map(({ original, description }) => (
+export const Gallery = ({ friends }) => {
+  const galleryItems = useMemo(
+    () =>
+    friends.map(({ original, description }) => (
       <GalleryItem key={nanoid()} original={original} description={description} />
-    ))}
-  </ul>
-);
+      )),
+    [friends]
+  );
 
+  return (
+    <ul className={css.gallery}>
+      {galleryItems}
+    </ul>
+  );
+};
